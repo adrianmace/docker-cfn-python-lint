@@ -1,9 +1,8 @@
 # docker-cfn-python-lint
-Docker image of [cfn-python-lint](https://hub.docker.com/r/masahide/cfn-python-lint) to update automatically
+Docker image of [aws-cloudformation/cfn-lint](https://github.com/aws-cloudformation/cfn-lint) with automated builds.
 
-[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/masahide/cfn-python-lint)](https://hub.docker.com/repository/docker/masahide/cfn-python-lint) ![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/masahide/cfn-python-lint)
-
-
+![Build Status](https://github.com/adrianmace/docker-cfn-python-lint/actions/workflows/build.yml/badge.svg)  
+![Build Status](https://github.com/adrianmace/docker-cfn-python-lint/actions/workflows/deploy.yml/badge.svg)
 
 
 # usage
@@ -11,5 +10,5 @@ Docker image of [cfn-python-lint](https://hub.docker.com/r/masahide/cfn-python-l
 lint template.yaml:
 
 ```bash:
-docker run --rm -v $PWD:/data masahide/cfn-python-lint /data/template.yaml
+docker run --rm -v $PWD:/data ghcr.io/adrianmace/docker-cfn-python-lint:latest /data/template.yaml
 ```

@@ -1,4 +1,4 @@
-name: Build Docker Image
+name: Check For Updates
 
 on:
   push:
@@ -12,10 +12,8 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
-
-
     - name: checkout
       uses: actions/checkout@v2
 
@@ -35,24 +33,12 @@ jobs:
         sed 's/%CFN_LINT_VER%/${{ env.LATEST_VER }}/' Dockerfile.template > Dockerfile
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git commit -m "Add changes" -a
+        git commit -m "Update to v${{  env.LATEST_VER  }}" -a
+        git tag 'v${{ env.LATEST_VER }}' master
 
     - name: push master
       if: env.LATEST_VER != env.VER
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: build
-      if: env.LATEST_VER != env.VER
-      run: |
-        echo ${{ env.LATEST_VER }} >latest
-        sed 's/%CFN_LINT_VER%/${{ env.LATEST_VER }}/' Dockerfile.template > Dockerfile
-        git checkout -b v${{ env.LATEST_VER }}
-
-    - name: push branch
-      if: env.LATEST_VER != env.VER
-      uses: ad-m/github-push-action@master
-      with:
-        branch: v${{ env.LATEST_VER }}
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        tags: true
