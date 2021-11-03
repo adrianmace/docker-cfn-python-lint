@@ -33,7 +33,7 @@ jobs:
         sed 's/%CFN_LINT_VER%/${{ env.LATEST_VER }}/' Dockerfile.template > Dockerfile
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git commit -m "Add changes" -a
+        git commit -m "Update to v${{  env.LATEST_VER  }}" -a
         git tag 'v${{ env.LATEST_VER }}' master
 
     - name: push master
