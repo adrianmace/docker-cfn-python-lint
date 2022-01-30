@@ -1,4 +1,4 @@
-FROM python:3.8-alpine
+FROM python:3-alpine
 
 RUN pip install --no-cache-dir cfn-lint==%CFN_LINT_VER%
 
