@@ -1,11 +1,11 @@
 # docker-cfn-python-lint
+
+[![Check for updates from pypi.org](https://github.com/adrianmace/docker-cfn-python-lint/actions/workflows/10-check-for-updates.yml/badge.svg)](https://github.com/adrianmace/docker-cfn-python-lint/actions/workflows/10-check-for-updates.yml)
+[![Build and publish image to ghcr.io](https://github.com/adrianmace/docker-cfn-python-lint/actions/workflows/20-build-and-publish.yml/badge.svg)](https://github.com/adrianmace/docker-cfn-python-lint/actions/workflows/20-build-and-publish.yml)
+
 Docker image of [aws-cloudformation/cfn-lint](https://github.com/aws-cloudformation/cfn-lint) with automated builds.
 
-![Build Status](https://github.com/adrianmace/docker-cfn-python-lint/actions/workflows/build.yml/badge.svg)  
-![Build Status](https://github.com/adrianmace/docker-cfn-python-lint/actions/workflows/deploy.yml/badge.svg)
-
-
-# usage
+# Usage
 
 lint template.yaml:
 

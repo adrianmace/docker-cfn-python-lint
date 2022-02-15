@@ -1,4 +1,4 @@
-name: Check For Updates
+name: Check for updates from pypi.org
 
 on:
   push:
@@ -11,32 +11,32 @@ on:
 
 
 jobs:
-  build:
+  check-for-updates:
     runs-on: ubuntu-latest
     steps:
-    - name: checkout
+    - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: get latest version
+    - name: Get the latest version from pypi.org
       run: |
         curl -V
         jq -V
-        LATEST_VER=$(curl -s https://pypi.org/pypi/cfn-lint/json|jq -r '.releases|to_entries|map({key:.key, date:(.value[]|select(.packagetype=="sdist").upload_time)})|max_by(.date)|.key')
+        LATEST_VER=$(curl -s https://pypi.org/pypi/cfn-lint/json | jq -r '.releases|to_entries|map({key:.key, date:(.value[]|select(.packagetype=="sdist").upload_time)})|max_by(.date)|.key')
         echo $LATEST_VER
         echo "LATEST_VER=${LATEST_VER}" >> $GITHUB_ENV
         echo "VER=$(cat latest)" >> $GITHUB_ENV
 
-    - name: build
+    - name: Update to the latest version and tag commit
       if: env.LATEST_VER != env.VER
       run: |
-        echo ${{ env.LATEST_VER }} >latest
+        echo ${{ env.LATEST_VER }} > latest
         sed 's/%CFN_LINT_VER%/${{ env.LATEST_VER }}/' Dockerfile.template > Dockerfile
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git commit -m "Update to v${{  env.LATEST_VER  }}" -a
         git tag 'v${{ env.LATEST_VER }}' master
 
-    - name: push master
+    - name: Push commits to Github
       if: env.LATEST_VER != env.VER
       uses: ad-m/github-push-action@master
       with:

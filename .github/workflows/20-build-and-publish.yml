@@ -1,8 +1,9 @@
-name: Deploy New Image
+name: Build and publish image to ghcr.io
 
 on:
   push:
     tags:
+      - '*'
 
 env:
   REGISTRY: ghcr.io
