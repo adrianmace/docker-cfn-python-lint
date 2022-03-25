@@ -20,10 +20,11 @@ jobs:
 
       - name: Tag commit with cfn-lint version
         run: |
-          git tag 'v${{ env.VERSION }}' master
+          git tag --force 'v${{ env.VERSION }}' master
 
       - name: Push commits to Github
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           tags: true
+          force: true
