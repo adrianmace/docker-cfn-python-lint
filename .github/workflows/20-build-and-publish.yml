@@ -3,7 +3,7 @@ name: Build and publish image to ghcr.io
 on:
   push:
     tags:
-      - '*'
+      - "**"
 
 env:
   REGISTRY: ghcr.io
@@ -41,16 +41,10 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          flavor: |
-            latest=true
           tags: |
-            type=schedule
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
-            type=ref,event=branch
-            type=ref,event=pr
-            type=sha
 
       - name: Build and push container
         uses: docker/build-push-action@v2

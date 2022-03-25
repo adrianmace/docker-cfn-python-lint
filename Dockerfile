@@ -1,6 +1,8 @@
 FROM python:3-alpine
 
-RUN pip install --no-cache-dir cfn-lint==0.58.4
+COPY requirements.txt /requirements.txt
+
+RUN pip3 install --no-cache-dir --requirement /requirements.txt
 
 ENTRYPOINT ["cfn-lint"]
 CMD ["--help"]
