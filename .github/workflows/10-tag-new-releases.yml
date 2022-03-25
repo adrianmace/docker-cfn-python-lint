@@ -8,7 +8,7 @@ on:
       - "**.md"
 
 jobs:
-  check-for-updates:
+  tag-new-releases:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
