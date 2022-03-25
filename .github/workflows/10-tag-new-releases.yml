@@ -1,0 +1,29 @@
+name: Tag new releases of cfn-lint
+
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - "**.md"
+
+jobs:
+  check-for-updates:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Get the current tag from the file
+        run: |
+          echo "VERSION=$(sed -r -e 's/^.*==(.*)$/\1/g' requirements.txt)" >> $GITHUB_ENV
+
+      - name: Tag commit with cfn-lint version
+        run: |
+          git tag 'v${{ env.VERSION }}' master
+
+      - name: Push commits to Github
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          tags: true
