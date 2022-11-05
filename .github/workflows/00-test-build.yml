@@ -3,6 +3,7 @@ name: Test building of container image
 on:
   push:
     branches:
+      - "*"
       - "!master"
     paths-ignore:
       - "**.md"
