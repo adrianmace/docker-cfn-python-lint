@@ -1,4 +1,4 @@
-name: Build and publish image to ghcr.io
+name: Test building of container image
 
 on:
   push:
