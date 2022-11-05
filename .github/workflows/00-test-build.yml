@@ -1,4 +1,4 @@
-name: Test building of container image
+name: Test building the container image
 
 on:
   push:
@@ -28,7 +28,7 @@ jobs:
         id: buildx
         uses: docker/setup-buildx-action@v2
 
-      - name: Build acontainer
+      - name: Build container
         uses: docker/build-push-action@v3
         with:
           context: .

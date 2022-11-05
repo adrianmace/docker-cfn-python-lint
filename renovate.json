@@ -1,13 +1,7 @@
 {
   "extends": [
-    "config:base",
-    "group:all"
+    "config:base"
   ],
-  "packageRules": [
-    {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-      "automerge": true,
-      "ignoreTests": true
-    }
-  ]
+  "automerge": true,
+  "platformAutomerge": true
 }
