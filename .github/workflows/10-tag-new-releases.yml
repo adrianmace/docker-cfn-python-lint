@@ -18,7 +18,7 @@ jobs:
 
       - name: Get the current tag from the file
         run: |
-          echo "VERSION=$(sed -r -e 's/^.*==(.*)$/\1/g' requirements.txt)" >> $GITHUB_ENV
+          echo "VERSION=$(sed -rz -e 's/^cfn-lint==([^\n]*)(.*)$/\1/g' requirements.txt)" >> $GITHUB_ENV
 
       - name: Tag commit with cfn-lint version
         run: |
