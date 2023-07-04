@@ -1,4 +1,4 @@
-FROM python:3.11.4@sha256:080775ff092a46d2b52bf2b65bbebde495ba11d2d6138dc9ba3c901aed01cdc2
+FROM python:3.11.4@sha256:c246cd9b435d9d5f9da86aef9448f54982cafa2b64570c58b028723681170523
 
 COPY requirements.txt /requirements.txt
 
