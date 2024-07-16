@@ -1,2 +1,2 @@
 cfn-lint==1.6.1
-pydot==3.0.0
+pydot==3.0.1
