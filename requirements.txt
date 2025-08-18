@@ -1,2 +1,2 @@
-cfn-lint==1.38.3
+cfn-lint==1.39.0
 pydot==4.0.1
