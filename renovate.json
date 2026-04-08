@@ -1,6 +1,6 @@
 {
   "extends": [
-    "config:base"
+    "config:best-practices"
   ],
   "automerge": true,
   "ignoreTests": true,
