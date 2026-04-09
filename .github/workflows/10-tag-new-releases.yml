@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
         with:
           token: ${{ secrets.ADRIANMACE_PAT }}
 
@@ -25,7 +25,7 @@ jobs:
           git tag --force 'v${{ env.VERSION }}' master
 
       - name: Push commits to Github
-        uses: ad-m/github-push-action@master
+        uses: ad-m/github-push-action@4cc74773234f74829a8c21bc4d69dd4be9cfa599 # master
         with:
           github_token: ${{ secrets.ADRIANMACE_PAT }}
           tags: true
