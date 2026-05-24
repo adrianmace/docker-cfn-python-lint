@@ -25,7 +25,7 @@ jobs:
           git tag --force 'v${{ env.VERSION }}' master
 
       - name: Push commits to Github
-        uses: ad-m/github-push-action@f917f9b5ca9dfd7af6d104698e53b579ae2f3a7d # master
+        uses: ad-m/github-push-action@881a6320fdb16eb5318c5054f31c218aec2b324c # master
         with:
           github_token: ${{ secrets.ADRIANMACE_PAT }}
           tags: true
